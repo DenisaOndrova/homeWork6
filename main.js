@@ -1,76 +1,48 @@
-//ukol1
-/*
-let userEmail = prompt('Vložte Váš e-mail');
 
-let email = validator.isEmail(userEmail);
 
-let paragraph = document.querySelector('.msg');
+//DOMÁCÍ ÚKOLY
+//1. úkol
 
-if (email){
-		paragraph.textContent='E-mail is in the right format';
-		paragraph.classList.add('msg--valid')
-	} else {
-		paragraph.textContent='E-mail is not in the correct format'
-		paragraph.classList.add('msg--invalid')
+
+const parseDate = (date) => {
+
+
+	return {
+		day: Number(date.slice(0, 2)),
+		month: Number(date.slice(3, 5)),
+		year: Number(date.slice(6)),
+	}
 }
-*/
+
+const formattedDate = parseDate('10.04.1995');
+console.log(formattedDate);
 
 //ukol2
-/*
-const ellipseArea = (width,height) => {
-return ((width/2)*(height/2))*Math.PI
+
+const formatDate = (day, month, year) => {
+  return day + '.' + month + '.' + year;
+};
+
+const dateToFormat = { day: 12, month: 3, year: 2015 };
+const formattedDate2 = formatDate(dateToFormat.day, dateToFormat.month, dateToFormat.year);
+console.log(formattedDate2);
+
+//ukol3
+
+const round = (number) => {
+  const wholeNumber = Math.trunc(number)
+  const decimalNumber = number - wholeNumber
+
+  if (decimalNumber < 0.5) {
+    return wholeNumber
+  } else if (decimalNumber > 0.5) {
+    return Math.ceil(number)
+  } else {
+    if (wholeNumber % 2 === 0) {
+      return wholeNumber
+    } else {
+      return Math.ceil(number)
+    }
+  }
 }
-console.log(ellipseArea(1,2))
-
-//ukol 3 
-
-const max2 = (smallN,biggerN) => {
-if (smallN<biggerN){
-	return biggerN
-} else {
-	return smallN
-}
-}
-console.log(max2(10,8))
-
-*/
-
-//ukol 4
-
-const inputStr = prompt('Vložte DIČ')
-const isDIC = (inputStr) => {
-
-
-	if (inputStr.length < 11){
-		console.log('Délka je menší jak 11 - false')
-		return false
-
-	} else if (inputStr.length > 12) {
-		console.log('Délka je větší jak 12 - false')
-		return false
-	}
-
-	const prefix = inputStr.slice(0,2)
-	
-
-	if (prefix !== 'CZ') {
-		console.log ('Počáteční písmena nejsou CZ- false')
-		return false
-	} else {
-		console.log('Počátek je CZ')
-	}
-
-	const digits = inputStr.slice(3,12)
-
-	if (!validator.isInt(digits)){
-		console.log('Nejsou to čísla')
-		return false
-
-	} else {
-		console.log('jsou to čísla - vše je v pořádku')
-		return true
-	}
-
-}
-
-isDIC(inputStr)
+console.log(round(7.6))
