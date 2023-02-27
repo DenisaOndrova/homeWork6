@@ -1,32 +1,76 @@
-//Ukol z lekce 4
+//ukol1
+/*
+let userEmail = prompt('Vložte Váš e-mail');
 
+let email = validator.isEmail(userEmail);
 
-// 1. nazev oblibeneho filmu
+let paragraph = document.querySelector('.msg');
 
-const title = {
-	Name: 'When Marnie Was There'
+if (email){
+		paragraph.textContent='E-mail is in the right format';
+		paragraph.classList.add('msg--valid')
+	} else {
+		paragraph.textContent='E-mail is not in the correct format'
+		paragraph.classList.add('msg--invalid')
 }
-
-/* Do konzole jsem napsala následující:
-a - title.Name.lenght
-b - title.Name.toUpperCase()
-c - title.Name.slice(0,5)
-d - title.Name.slice(0,-5)
 */
 
-//2. ukol
+//ukol2
+/*
+const ellipseArea = (width,height) => {
+return ((width/2)*(height/2))*Math.PI
+}
+console.log(ellipseArea(1,2))
 
-const email = prompt('Enter your e-mail address:');
-const atIndex = email.indexOf('@');
-const userName = email.slice(0,atIndex);
-const domain = email.slice(atIndex+1);
+//ukol 3 
+
+const max2 = (smallN,biggerN) => {
+if (smallN<biggerN){
+	return biggerN
+} else {
+	return smallN
+}
+}
+console.log(max2(10,8))
+
+*/
+
+//ukol 4
+
+const inputStr = prompt('Vložte DIČ')
+const isDIC = (inputStr) => {
 
 
+	if (inputStr.length < 11){
+		console.log('Délka je menší jak 11 - false')
+		return false
 
-const cutEmail = {
-	userName: userName,
-	domain: domain,
-};
-document.body.innerHTML = '<h1><b>User details:</b></h1>';
-document.body.innerHTML ='<p><b>User name:</b> ' + cutEmail.userName + '</p>';
-document.body.innerHTML += '<p><b>Domain</b>: ' + cutEmail.domain + '</p>';
+	} else if (inputStr.length > 12) {
+		console.log('Délka je větší jak 12 - false')
+		return false
+	}
+
+	const prefix = inputStr.slice(0,2)
+	
+
+	if (prefix !== 'CZ') {
+		console.log ('Počáteční písmena nejsou CZ- false')
+		return false
+	} else {
+		console.log('Počátek je CZ')
+	}
+
+	const digits = inputStr.slice(3,12)
+
+	if (!validator.isInt(digits)){
+		console.log('Nejsou to čísla')
+		return false
+
+	} else {
+		console.log('jsou to čísla - vše je v pořádku')
+		return true
+	}
+
+}
+
+isDIC(inputStr)
